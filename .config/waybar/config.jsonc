@@ -1,0 +1,184 @@
+// -*- mode: jsonc -*-
+{
+    "reload_style_on_change": true,
+    "layer": "top", 
+    "output": "DP-1",
+    "position": "top", 
+    "height": 30, 
+    "spacing": 4, 
+
+    // Choose the order of the modules
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+
+    "modules-right": [
+        "tray",
+        "custom/sep",
+        "network",
+        "custom/sep",
+        "cpu",
+        "custom/sep",
+        "memory",
+        "custom/sep",
+        "disk",
+        "custom/sep",
+        "custom/temp",
+        "custom/sep",
+        "custom/fan",
+        "custom/sep",
+        "battery",
+        "bluetooth",
+        "wireplumber",
+        "custom/sep",
+        "clock",
+        "custom/sep",
+        "custom/power"
+    ],
+
+    // Modules configuration
+    "hyprland/workspaces": {
+        /*
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{name}",
+        "persistent-workspaces": {
+            "*" : 9
+        }
+        */
+        "disable-scroll": true,
+        "warp-on-scroll": false,
+        "on-click": "activate",
+        "format": "{name}",
+        "format-icons": {
+            "default": "",
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "active": "󱓻",
+            "urgent": "󱓻"
+        },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
+    },
+    "hyprland/window" : {
+        "max-length": 40,
+        "seperate-outputs": false
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+        //"icons": {
+        //   "blueman": "bluetooth",
+        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        //}
+    },
+    "clock": {
+        "interval": 60,
+        "format": "{:%H:%M}",
+        "format-alt": "{:%a, %e %b %Y %H:%M}"
+    },
+    "cpu": {
+        "format": "CPU: {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "Mem: {used}GiB"
+    },
+    "disk": {
+        "interval": 60,
+        "path": "/",
+        "format": "Disk: {free}"
+    },
+    "battery": {
+        //"bat": "BAT0", // BATX is a non-existent battery on most systems
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "Bat: {capacity}% {icon} {time}",
+        "format-charging": "{icon} {capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-full": "{icon} {capacity}% ",
+        "format-alt": "Bat {capacity}%",
+        "format-time": "{H}:{M}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format": "Online",
+        "format-disconnected": "Disconnected ⚠",
+
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "bluetooth": {
+//        "format": "{icon} {status}",
+        "format": " {status}",
+        "format-disabled": "",
+        "format-no-controller": "",
+        "format-off": "",
+        "interval": 30,
+        "on-click": "blueman-manager"
+    },
+
+    "custom/sep": {
+        "format" : "|",
+        "interval" : 0
+    },
+
+    "wireplumber": {
+        "format": "{icon}",
+        "format-bluetooth": "󰂰",
+        "nospacing": 1,
+        "tooltip-format": "Volume : {volume}%",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "headphone": "",
+            "default": ["󰖀","󰕾",""]
+        },
+        "on-click": "pamixer -t",
+        "scroll-step": 1
+    },
+    "custom/power": {
+        "format": "󰤆",
+        "tooltip": false,
+        "on-click": "~/.config/hypr/scripts/power-menu &"
+    },
+    "custom/temp": {
+        "exec": "~/.config/hypr/scripts/temp_fan.sh --temp",
+        "exec-if": "pgrep fancontrol",
+        "interval": 10,
+        "format": "Temp [{}]",
+        "min-length" : 8
+    },
+    "custom/fan": {
+        "exec": "~/.config/hypr/scripts/temp_fan.sh --fan",
+        "exec-if": "pgrep fancontrol",
+        "interval": 10,
+        "format": "Fans [{}]",
+        "min-length" : 8
+    }
+
+
+}

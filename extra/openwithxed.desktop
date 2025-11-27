@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=all/all;
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+Actions=openWithXed;
+
+[Desktop Action openWithXed]
+Name=Open with Xed
+Exec=bash -c 'if [[ -d ""$*"" ]]; then xed "$*"/*; elif [[ -f ""$*"" ]]; then xed "$*"; else if [ $# -ge 1 ]; then command="xed"; while [ $# -gt 0 ]; do if [[ $1 = *" "* ]]; then xed "$1"; else command="$command $1"; fi; shift; done; $command; elif [ $# == 0 ]; then xed; fi; fi;' 'dummy-param' %F
+Icon=xed

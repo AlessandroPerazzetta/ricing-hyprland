@@ -1,0 +1,17 @@
+[SddmGreeterTheme]
+Name=SDDM Minimal Purple
+Description=Theme for SDDM
+Author=Matt Jolly
+Copyright=Copyright (C)
+License=GPL-3.0-or-later
+Type=sddm-theme
+Version=2.0.0
+Website=https://gitlab.com/AlessandroPerazzetta/sddm-minimal-purple
+Screenshot=Previews/PartialBlur.png
+MainScript=Main.qml
+ConfigFile=theme.conf
+TranslationsDirectory=translations
+Email=asdadsasd@asdasdasd.net
+Theme-Id=minimal-purple
+Theme-API=2.11
+QtVersion=6

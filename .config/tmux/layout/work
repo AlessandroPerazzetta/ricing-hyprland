@@ -1,0 +1,8 @@
+#split-window -d -h -p 50  # Split into left and right, with right taking 50%
+#split-window -d -v -p 50  # Split the left pane vertically, with bottom taking 50%
+
+split-window -d -h -l 50%  # Split into left and right, right pane 50%
+select-pane -t 0           # Select the left pane
+split-window -d -v -l 50%  # Split the left pane vertically, bottom pane 50%
+#select-pane -t 1           # Select the right pane
+#split-window -d -v -l 50%  # Split the right pane vertically, bottom pane 50%

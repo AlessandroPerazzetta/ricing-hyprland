@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+WALLPAPER_DIR="$HOME/wallpapers/"
+CURRENT_WALL=$(hyprctl hyprpaper listloaded)
+
+# Get the name of the focused monitor with hyprctl
+FOCUSED_MONITOR=$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name')
+
+# SINGLE MONITOR
+# Get a random wallpaper that is not the current one
+# WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
+
+# MULTI MONITOR
+# Get a random wallpaper that is not the current one
+WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" | shuf -n 1)
+
+# Apply the selected wallpaper
+# SINGLE MONITOR
+# hyprctl hyprpaper reload ,"$WALLPAPER"
+# MULTI MONITOR
+hyprctl hyprpaper reload "$FOCUSED_MONITOR","$WALLPAPER"

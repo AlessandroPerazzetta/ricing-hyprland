@@ -1,0 +1,121 @@
+/* Color Scheme */
+:root {
+	--background-color: #1e1e2e;
+	--box-background: #1a1b1d;
+	--border-color: #2f3244;
+	--highlight-color: #ab2ef3e3;
+	--label-color: #f8f8f2;
+	--low-color: #50fa7b;
+	--medium-color: #f1fa8c;
+	--high-color: #ff5555;
+	--muted-color: #6272a4;
+	--icon-color: #ab2ef3e3;
+}
+
+#syshud {
+	background: transparent;
+}
+
+#syshud .box_layout {
+	background: var(--box-background);
+	border-radius: 25px;
+	border: 1px solid var(--border-color);
+	margin: 10px;
+}
+
+#syshud scale {
+	margin: 0px;
+	padding: 0px;
+}
+
+#syshud label {
+	color: alpha(var(--label-color), 0.5);
+}
+
+/* Horizontal layout */
+#syshud scale.horizontal {
+	padding: 0px;
+	min-height: 5px;
+}
+#syshud scale.horizontal trough {
+	border-radius: 3px;
+	background: alpha(currentColor, 0.1);
+	min-height: 5px;
+	padding: 0px;
+}
+#syshud scale.horizontal highlight {
+	border-radius: 3px;
+	min-height: 5px;
+	background: alpha(var(--highlight-color), 0.75);
+	margin: 0px;
+}
+#syshud scale.horizontal slider {
+	margin: 0px;
+	background: transparent;
+	min-height: 5px;
+	box-shadow: none;
+	padding: 0px;
+	background: alpha(var(--highlight-color), 0.75);
+}
+
+/* Vertical layout */
+#syshud scale.vertical {
+	padding: 0px;
+	min-width: 5px;
+}
+#syshud scale.vertical trough {
+	border-radius: 3px;
+	background: alpha(currentColor, 0.1);
+	min-width: 5px;
+	padding: 0px;
+}
+#syshud scale.vertical highlight {
+	border-radius: 3px;
+	min-width: 5px;
+	background: alpha(var(--highlight-color), 0.75);
+	margin: 0px;
+}
+#syshud scale.vertical slider {
+	margin: 0px;
+	background: transparent;
+	min-width: 5px;
+	box-shadow: none;
+	padding: 0px;
+	background: alpha(var(--highlight-color), 0.75);
+}
+
+/* Levels */
+/*
+#syshud .muted {
+}
+#syshud .low {
+}
+#syshud .medium {
+}
+#syshud .high {
+}
+#syshud .muted {
+	color: var(--muted-color);
+}
+#syshud .low {
+	color: var(--low-color);
+}
+#syshud .medium {
+	color: var(--medium-color);
+}
+#syshud .high {
+	color: var(--high-color);
+}
+*/
+#syshud .muted {
+	color: var(--icon-color);
+}
+#syshud .low {
+	color: var(--icon-color);
+}
+#syshud .medium {
+	color: var(--icon-color);
+}
+#syshud .high {
+	color: var(--icon-color);
+}
