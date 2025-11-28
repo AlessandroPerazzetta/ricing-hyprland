@@ -5,8 +5,7 @@ import = ["~/.config/alacritty/themes/purple.toml"]
 TERM = "xterm-256color"
 
 [window]
-padding.x = 3
-padding.y = 3
+#padding = { x = 1, y = 1 }
 
 decorations = "Buttonless"
 
@@ -17,10 +16,11 @@ option_as_alt = "Both"
 
 [font]
 # Get available font: fc-list : family | sort -f | grep Nerd
-normal = { family = "JetBrainsMono NF", style ="Regular" }
-bold = { family = "JetBrainsMono NF", style ="Bold" }
-italic = { family = "JetBrainsMono NF", style ="Italic" }
-size = 10 
+normal = { family = "JetBrainsMono NF", style = "Regular" }
+bold = { family = "JetBrainsMono NF", style = "Bold" }
+italic = { family = "JetBrainsMono NF", style = "Italic" }
+bold_italic = { family = "JetBrainsMono NF", style = "Bold Italic" }
+size = 11
 
 [cursor]
 style = { shape = "Underline", blinking = "On" }
