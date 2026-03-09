@@ -36,6 +36,8 @@
         "custom/sep",
         "clock",
         "custom/sep",
+        "custom/power_mask",
+        "custom/sep",
         "custom/power"
     ],
 
@@ -159,6 +161,14 @@
         },
         "on-click": "pamixer -t",
         "scroll-step": 1
+    },
+    "custom/power_mask": {
+      "format": "{}",
+      "return-type": "json",
+      "exec": "~/.config/waybar/scripts/power_mask.sh",
+      "on-click": "~/.config/waybar/scripts/power_mask.sh toggle",
+      "interval": 5,
+      "tooltip": true
     },
     "custom/power": {
         "format": "󰤆",

@@ -152,4 +152,12 @@ button:hover {
 #tray {
     background-color: #2980b9;
 }
+#custom-power_mask.inhibited {
+    color: #f38ba8; /* Red/Orange for active inhibition */
+    font-weight: bold;
+}
+
+#custom-power_mask.normal {
+    color: #a6e3a1; /* Green for normal operation */
+}
 

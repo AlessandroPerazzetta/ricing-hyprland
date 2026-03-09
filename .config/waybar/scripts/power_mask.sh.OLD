@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Check current status (1 = inhibited, 0 = normal)
+STATUS=$(hyprctl getoption general:inhibit_sleep -j | jq '.int')
+
+if [[ "$1" == "toggle" ]]; then
+    if [ "$STATUS" -eq 1 ]; then
+        hyprctl keyword general:inhibit_sleep 0
+    else
+        hyprctl keyword general:inhibit_sleep 1
+    fi
+else
+    # Output for Waybar JSON
+    if [ "$STATUS" -eq 1 ]; then
+        echo '{"text": "󰛐", "class": "inhibited", "tooltip": "Sleep Inhibited"}'
+    else
+        echo '{"text": "󰒲", "class": "normal", "tooltip": "Sleep Enabled"}'
+    fi
+fi
