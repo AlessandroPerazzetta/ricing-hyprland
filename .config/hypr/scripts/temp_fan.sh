@@ -4,7 +4,7 @@ set -o errexit -o pipefail -o nounset
 # Get CPU temperature using 'sensors' command
 cpu_temp=$(sensors | awk '/CPUTIN:/ {gsub("\\+", "", $2); print $2}')
 # Get GPU temperature using 'nvidia-smi' command
-gpu_temp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)"°C"
+gpu_temp=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)
 # Get fan speeds using 'sensors' command
 fan1=$(sensors | awk '/fan1:/ {print $2,$3}')
 fan2=$(sensors | awk '/fan2:/ {print $2,$3}')
