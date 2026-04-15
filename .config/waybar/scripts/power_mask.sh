@@ -11,11 +11,13 @@ if [[ "$1" == "toggle" ]]; then
     if [ "$IS_RUNNING" = true ]; then
         # Kill hypridle to prevent sleep (Inhibit ON)
         pkill hypridle
-        notify-send "Hyprland" "Sleep Inhibited (Caffeine ON)" -i nightly
+        #notify-send "Hyprland" "Sleep Inhibited (Caffeine ON)" -i nightly
+        hyprctl notify -1 1500 "rgb(00ff11)" "fontsize:11 Sleep Inhibited (Caffeine ON)"
     else
         # Restart hypridle to allow sleep (Inhibit OFF)
         hypridle &
-        notify-send "Hyprland" "Sleep Enabled (Caffeine OFF)" -i sleep
+        #notify-send "Hyprland" "Sleep Enabled (Caffeine OFF)" -i sleep
+        hyprctl notify -1 1500 "rgb(ff0011)" "fontsize:11 Sleep Enabled (Caffeine OFF)"
     fi
 else
     # Output for Waybar (Logic is flipped: Running = Normal icon, Not Running = Inhibited icon)

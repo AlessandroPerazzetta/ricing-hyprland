@@ -2,6 +2,8 @@
 {
     "reload_style_on_change": true,
     "layer": "top", 
+    "passthrough": false,
+    "exclusive": true,
     "output": "DP-1",
     "position": "top", 
     "height": 30, 
@@ -18,13 +20,7 @@
     "modules-right": [
         "tray",
         "custom/sep",
-        "network",
-        "custom/sep",
-        "cpu",
-        "custom/sep",
-        "memory",
-        "custom/sep",
-        "disk",
+        "custom/sysinfo",
         "custom/sep",
         "custom/temp",
         "custom/sep",
@@ -32,6 +28,7 @@
         "custom/sep",
         "battery",
         "bluetooth",
+        "custom/sep",
         "wireplumber",
         "custom/sep",
         "clock",
@@ -95,6 +92,15 @@
         "format": "{:%H:%M}",
         "format-alt": "{:%a, %e %b %Y %H:%M}"
     },
+    "custom/sysinfo": {
+        "exec": "~/.config/waybar/scripts/sysinfo.sh",
+        "return-type": "json",
+        "format": "{}",
+        "interval": 10,
+        "tooltip": true,
+        "escape": false
+    },
+    /*
     "cpu": {
         "format": "CPU: {usage}%",
         "tooltip": false
@@ -107,6 +113,18 @@
         "path": "/",
         "format": "Disk: {free}"
     },
+    "network": {
+        "format": "Online",
+        "format-disconnected": "Disconnected ⚠",
+
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "nm-connection-editor"
+    },
+    */
     "battery": {
         //"bat": "BAT0", // BATX is a non-existent battery on most systems
         "states": {
@@ -122,18 +140,6 @@
         "format-time": "{H}:{M}",
         "format-icons": ["", "", "", "", ""]
     },
-    "network": {
-        "format": "Online",
-        "format-disconnected": "Disconnected ⚠",
-
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "on-click": "nm-connection-editor"
-    },
-
     "bluetooth": {
 //        "format": "{icon} {status}",
         "format": " {status}",
@@ -146,7 +152,7 @@
 
     "custom/sep": {
         "format" : "|",
-        "interval" : 0
+        "tooltip": false
     },
 
     "wireplumber": {
@@ -167,7 +173,7 @@
       "return-type": "json",
       "exec": "~/.config/waybar/scripts/power_mask.sh",
       "on-click": "~/.config/waybar/scripts/power_mask.sh toggle",
-      "interval": 5,
+      "interval": 10,
       "tooltip": true
     },
     "custom/power": {
@@ -179,14 +185,14 @@
         "exec": "~/.config/hypr/scripts/temp_fan.sh --temp",
         "exec-if": "pgrep fancontrol",
         "interval": 10,
-        "format": "Temp [{}]",
+        "format": "[{}]",
         "min-length" : 8
     },
     "custom/fan": {
         "exec": "~/.config/hypr/scripts/temp_fan.sh --fan",
         "exec-if": "pgrep fancontrol",
         "interval": 10,
-        "format": "Fans [{}]",
+        "format": "[{}]",
         "min-length" : 8
     }
 
