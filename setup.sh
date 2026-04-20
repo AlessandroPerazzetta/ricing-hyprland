@@ -61,6 +61,7 @@ pacman_packages=(
     "hyprpicker"
     "fancontrol"
     "htop"
+    "solaar"
 )
 
 # Update system and install packages
