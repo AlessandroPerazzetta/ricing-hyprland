@@ -6,7 +6,7 @@ selected=$(printf '%s\n' $entries | wofi -dmenu -c $XDG_CONFIG_HOME/wofi/config 
 
 case $selected in
   logout)
-    hyprctl dispatch exit;;
+    hyprctl --instance 0 dispatch 'hl.dsp.exit()';;
   suspend)
     exec systemctl suspend;;
   reboot)

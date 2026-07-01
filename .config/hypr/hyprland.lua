@@ -473,6 +473,24 @@ hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right"}
 hl.bind(mainMod .. " + SHIFT + up", hl.dsp.window.move({ direction = "up"}))
 hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.move({ direction = "down"}))
 
+-- Resize window with mainMod + CTRL + arrow keys
+-- Press ALT + R and arrow key to resize current window, press escape to exit from submap and finish resizing mode
+-- Switch to a submap called `resize`.
+hl.bind("ALT + R", hl.dsp.submap("resize"))
+
+-- Start a submap called "resize".
+hl.define_submap("resize", function()
+
+    -- Set repeating binds for resizing the active window.
+    hl.bind("right", hl.dsp.window.resize({ x = 10, y = 0, relative = true}), { repeating = true })
+    hl.bind("left", hl.dsp.window.resize({ x = -10, y = 0, relative = true}), { repeating = true })
+    hl.bind("up", hl.dsp.window.resize({ x = 0, y = 10, relative = true}), { repeating = true })
+    hl.bind("down", hl.dsp.window.resize({ x = 0, y = -10, relative = true}), { repeating = true })
+
+    -- Use `reset` to go back to the global submap
+    hl.bind("escape", hl.dsp.submap("reset"))
+
+end)
 
 -- Laptop multimedia keys for volume and LCD brightness
 
@@ -618,95 +636,17 @@ hl.workspace_rule({
 
 -- CUSTOM WINDOWS RULES
 
-hl.window_rule({
-    name  = "workspace_1_silent",
-    match = {
-        class = "brave-browser",
-        title = "^(1)",
-    },
-    workspace = "1 silent",
-})
-
-hl.window_rule({
-    name  = "workspace_2_silent",
-    match = {
-        class = "brave-browser",
-        title = "^(2)",
-    },
-    workspace = "2 silent",
-})
-
-hl.window_rule({
-    name  = "workspace_3_silent",
-    match = {
-        class = "brave-browser",
-        title = "^(3)",
-    },
-    workspace = "3 silent",
-})
-
-hl.window_rule({
-    name  = "workspace_4_silent",
-    match = {
-        class = "brave-browser",
-        title = "^(4)",
-    },
-    workspace = "4 silent",
-})
-
-hl.window_rule({
-    name  = "workspace_5_silent",
-    match = {
-        class = "brave-browser",
-        title = "^(5)",
-    },
-    workspace = "5 silent",
-})
-
-hl.window_rule({
-    name  = "workspace_6_silent",
-    match = {
-        class = "brave-browser",
-        title = "^(6)",
-    },
-    workspace = "6 silent",
-})
-
-hl.window_rule({
-    name  = "workspace_7_silent",
-    match = {
-        class = "brave-browser",
-        title = "^(7)",
-    },
-    workspace = "7 silent",
-})
-
-hl.window_rule({
-    name  = "workspace_8_silent",
-    match = {
-        class = "brave-browser",
-        title = "^(8)",
-    },
-    workspace = "8 silent",
-})
-
-hl.window_rule({
-    name  = "workspace_9_silent",
-    match = {
-        class = "brave-browser",
-        title = "^(9)",
-    },
-    workspace = "9 silent",
-})
-
-hl.window_rule({
-    name  = "workspace_10_silent",
-    match = {
-        class = "brave-browser",
-        title = "^(10)",
-    },
-    workspace = "10 silent",
-})
+-- Dynamically generate routing rules for Brave windows titled (1) through (10)
+for i = 1, 10 do
+    hl.window_rule({
+        name  = "workspace_" .. i .. "_silent",
+        match = {
+            class = "brave-browser",
+            title = "^(" .. i .. ")", -- Mirroring your exact working config syntax
+        },
+        workspace = i .. " silent",
+    })
+end
 
 hl.window_rule({
     name      = "workspace_10_apps_silent",
