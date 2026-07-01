@@ -32,3 +32,9 @@ bindings = [
 { mouse = "Right", action = "Copy" },
 { mouse = "Right", mods = "Control", action = "Paste" },
 ]
+
+[keyboard]
+bindings = [
+{ key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+]
+
