@@ -358,6 +358,8 @@ hl.bind(mainMod .. " + " .. "RETURN", hl.dsp.exec_cmd("alacritty"))
 
 hl.bind(mainMod .. " + " .. "W", hl.dsp.exec_cmd("brave"))
 
+hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "W", hl.dsp.exec_cmd("brave --incognito"))
+
 hl.bind(mainMod .. " + " .. "Q", hl.dsp.window.close())
 
 hl.bind(mainMod .. " + " .. "M", hl.dsp.exit())
@@ -387,7 +389,7 @@ hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "P", hl.dsp.exec_cmd("hyprpicker
 
 -- Scripts launch from bindings
 
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "W", hl.dsp.exec_cmd("~/.config/hypr/scripts/launch-waybar"))
+hl.bind(mainMod .. " + " .. "CTRL" .. " + " .. "W", hl.dsp.exec_cmd("bash -c ~/.config/hypr/scripts/launch-waybar"))
 
 -- Move focus with mainMod + arrow keys
 
